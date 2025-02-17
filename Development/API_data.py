@@ -2,13 +2,13 @@ from googleapiclient.discovery import build
 import pandas as pd
 import os
 
-# Replace with your API Key
 API_KEY = os.getenv('YT_API_KEY')
 
 if API_KEY is None:
-    raise ValueError("API Key not found. Set the YT_API_KEY environment variable.")
+    raise ValueError("API Key not found. Set the YT_API_KEY environment variable. \
+        Refer to API_Key documentation by Youtube to create your own to run the file: \
+            https://console.cloud.google.com/apis")
 
-# Initialize YouTube API client
 youtube = build('youtube', 'v3', developerKey=API_KEY)
 
 def get_video_comments(video_id, max_results=100):
@@ -44,7 +44,7 @@ def get_video_comments(video_id, max_results=100):
     
 
 video_id = "32t8AJx5FLE"
-df = get_video_comments(video_id, max_results=200)  # Adjust max_results as needed
+df = get_video_comments(video_id, max_results=200)
 
 # Save data to CSV for further analysis
 # df.to_csv("youtube_comments.csv", index=False)
